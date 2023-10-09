@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ReFarmLand Private List</title>
+    <style>
+        body {
+            background-color: #333;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #000;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            margin: 2px;
+        }
+
+        .button:hover {
+            background-color: darkslategrey;
+        }
+
+        #copyMessage {
+            display: none;
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background-color: black;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        #lastClick {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            background-color: black;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        h1 {
+            color:#fff
+        }
+        h5 {
+            color: #fff;
+        }
+
+        .page {
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+            align-items: left;
+        }
+
+        .green {
+            color: green;
+        }
+
+        .blue {
+            color: lightskyblue;
+        }
+
+        .purple {
+            color: blueviolet;
+        }
+
+        .yellow {
+            color: yellow;
+        }
+
+        .container {
+            color: gray;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>ReFarmLand Private List</h1>
+    <div class="page">
+<div>
+    <h5>Mines Farms:</h5>
+    <button class="button green" onclick="copyText(this, 'button6')">3257</button>
+    <button class="button green" onclick="copyText(this, 'button7')">3610</button>
+    <button class="button green" onclick="copyText(this, 'button8')">4495</button>
+    <button class="button green" onclick="copyText(this, 'button9')">4560</button>
+    <button class="button blue" onclick="copyText(this, 'button11')">3599</button>
+    <button class="button blue" onclick="copyText(this, 'button12')">3659</button>
+    <button class="button blue" onclick="copyText(this, 'button13')">3981</button>
+    <button class="button blue" onclick="copyText(this, 'button13')">4772</button>
+    <button class="button purple" onclick="copyText(this, 'button14')">1246</button>
+    <button class="button purple" onclick="copyText(this, 'button15')">2910</button>
+    <button class="button purple" onclick="copyText(this, 'button16')">3128</button>
+    <button class="button purple" onclick="copyText(this, 'button17')">3856</button>
+</div>
+
+<div>
+    <h5>Slime Farms:</h5>
+    <button class="button" onclick="copyText(this, 'button21')">4299</button>
+    <button class="button" onclick="copyText(this, 'button22')">662</button>
+    <button class="button" onclick="copyText(this, 'button23')">1933</button>
+    <button class="button" onclick="copyText(this, 'button24')">3110</button>
+    <button class="button" onclick="copyText(this, 'button25')">2863</button>
+    <button class="button" onclick="copyText(this, 'button26')">4730</button>
+</div>
+
+<div>
+    <h5>Apiary Farms:</h5>
+    <button class="button" onclick="copyText(this, 'button1')">1629</button>
+    <button class="button" onclick="copyText(this, 'button2')">2074</button> 
+    <button class="button" onclick="copyText(this, 'button3')">4025</button>
+    <button class="button" onclick="copyText(this, 'button4')">4027</button>
+    <button class="button" onclick="copyText(this, 'button5')">4172</button>
+</div>
+
+<div>
+    <h5>Workbench Farms:</h5>
+    <button class="button" onclick="copyText(this, 'button1')">2933</button>
+</div>
+
+<div>
+    <h5>Kiln Farms:</h5>
+    <button class="button" onclick="copyText(this, 'button1')">2096</button>
+</div>
+
+</div>
+
+<div class="container">
+    <div class="content">
+      <p>All Farms have 4 Industries and a chicken coop.</p>
+    </div>
+  </div>
+    <div id="copyMessage">Text "<span id="copiedText"></span>" was copied</div>
+    <div id="lastClick">Last Click: <span id="lastClickedButton">None</span></div>
+
+    <script>
+        // Получаем текст из localStorage при загрузке страницы
+        const lastClickedButton = document.getElementById("lastClickedButton");
+        const savedButtonText = localStorage.getItem("lastClickedButton");
+        if (savedButtonText) {
+            lastClickedButton.textContent = savedButtonText;
+        }
+
+        function copyText(button, key) {
+            const textToCopy = button.textContent;
+            const tempInput = document.createElement("input");
+            document.body.appendChild(tempInput);
+            tempInput.setAttribute("value", textToCopy);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            const copyMessage = document.getElementById("copyMessage");
+            const copiedText = document.getElementById("copiedText");
+            copiedText.textContent = textToCopy;
+            copyMessage.style.display = "block";
+
+            setTimeout(function() {
+                copyMessage.style.display = "none"; // Исправлено: добавлен знак "="
+            }, 2000);
+
+            const lastClickedButton = document.getElementById("lastClickedButton");
+            lastClickedButton.textContent = textToCopy;
+
+            // Сохраняем текст кнопки в localStorage
+            localStorage.setItem("lastClickedButton", textToCopy);
+        }
+    </script>
+</body>
+</html>
+
